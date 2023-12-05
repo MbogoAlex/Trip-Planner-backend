@@ -18,7 +18,7 @@ public class ProposedTripService {
 
 
     public ProposedTrip updateTrip(ProposedTrip updatedTrip) {
-        ProposedTrip tripToUpdate = proposedTripRepository.findById(updatedTrip.getTripID()).orElse(null);
+        ProposedTrip tripToUpdate = proposedTripRepository.findTripByTripID(updatedTrip.getTripID());
         tripToUpdate.setTripInterests(updatedTrip.getTripInterests());
         tripToUpdate.setMessage(updatedTrip.getMessage());
         tripToUpdate.setLocation(updatedTrip.getLocation());

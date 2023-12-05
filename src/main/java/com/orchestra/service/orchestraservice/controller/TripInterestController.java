@@ -24,11 +24,17 @@ public class TripInterestController {
     @PostMapping("/expressTripInterest")
     public TripInterest expressTripInterest(@RequestBody TripInterest tripInterest) {
         tripInterest.setLocalDateTime(LocalDateTime.now());
+        System.out.println("FINDING TRIP WITH ID: "+tripInterest.getTripID());
         ProposedTrip trip = proposedTripService.getTripByTripID(tripInterest.getTripID());
         trip.getTripInterests().add(tripInterest);
-        Person person = personService.findPersonByUserID(tripInterest.getInterestedPersonId());
-        person.getTripsInterestedIn().add(tripInterest);
-        personService.updatePerson(person);
+//        Person person = personService.findPersonByUserID(tripInterest.getInterestedPersonId());
+//        person.getTripsInterestedIn().add(tripInterest);
+        System.out.println("THE TRIP TO UPDATE IS ");
+        System.out.println(trip);
+        proposedTripService.updateTrip(trip);
+
+//        personService.updatePerson(person);
+
 
         return tripInterestService.expressTripInterest(tripInterest);
     }

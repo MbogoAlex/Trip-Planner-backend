@@ -25,7 +25,7 @@ public class Person {
     private List<ProposedTrip> proposedTrips;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_user_id", referencedColumnName = "interestedPersonId")
+    @JoinColumn(name = "fk_user_id", referencedColumnName = "userID")
     private List<TripInterest> tripsInterestedIn;
 
 //    @OneToMany(cascade = CascadeType.ALL)
